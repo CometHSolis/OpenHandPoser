@@ -11,9 +11,7 @@ https://user-images.githubusercontent.com/71634747/162556121-cb9d679e-aa47-4ea9-
 
 
 SteamVR implementation:
-Using the Hand-Specific poser, assign the progress floats to SteamVR finger curls.
-
-i dont know how to implement other systems.
+Using the Hand-Specific poser, assign the progress floats to SteamVR finger curls like so: https://www.toptal.com/developers/hastebin/uzehasuvow.csharp
 
 Setup:
 
