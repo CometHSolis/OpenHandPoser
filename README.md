@@ -10,3 +10,11 @@ SteamVR implementation:
 Using the Hand-Specific poser, assign the progress floats to SteamVR finger curls.
 
 i dont know how to implement other systems.
+
+Setup:
+
+  Normal Poser:
+    Drag and drop the bones you wish to pose into the "Bones" array, then get posing.
+
+  Hand-Specific Poser:
+    Drag and drop each finger's bones into their respective arrays, then get posin
