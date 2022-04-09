@@ -5,3 +5,8 @@ This package has 2 different Posers and examples, The normal poser, and the Hand
 
 https://user-images.githubusercontent.com/71634747/162556121-cb9d679e-aa47-4ea9-82a3-def57f3a0acc.mp4
 
+
+SteamVR implementation:
+Using the Hand-Specific poser, assign the progress floats to SteamVR finger curls.
+
+i dont know how to implement other systems.
