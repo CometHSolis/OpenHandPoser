@@ -18,3 +18,6 @@ Setup:
 
   Hand-Specific Poser:
     Drag and drop each finger's bones into their respective arrays, then get posin
+    
+Other:
+Credit to https://github.com/madsbangh/EasyButtons for the button attributes.
