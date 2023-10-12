@@ -13,67 +13,46 @@ public class HandSpecificPoser : MonoBehaviour
 
     public HandSpecficiPoserSO pose;
 
+    public void AssignBonePose(Transform[] bones, Quaternion[] fileBones, bool save)
+    {
+        for (int i = 0; int < bones.Length; i++)
+        {
+            if (save)
+            {
+                if (i == 0)
+                    fileBones = new Quaternion[bones.Length];
+            
+                 fileBones[i] = bones[i].localRotation;
+            }
+            else
+            {
+                 bones[i].localRotation = fileBones[i];
+            }
+        }
+    }
+
     [Button]
     public void SavePose()
     {
-        pose.Thumb = new Quaternion[Thumb.Length];
-        pose.Index = new Quaternion[Index.Length];
-        pose.Middle = new Quaternion[Middle.Length];
-        pose.Ring = new Quaternion[Ring.Length];
-        pose.Pinky = new Quaternion[Pinky.Length];
-
-        for (int i = 0; i < Thumb.Length; i++)
-        {
-            pose.Thumb[i] = Thumb[i].localRotation;
-        }
-
-        for (int i = 0; i < Index.Length; i++)
-        {
-            pose.Index[i] = Index[i].localRotation;
-        }
-
-        for (int i = 0; i < Middle.Length; i++)
-        {
-            pose.Middle[i] = Middle[i].localRotation;
-        }
-
-        for (int i = 0; i < Ring.Length; i++)
-        {
-            pose.Ring[i] = Ring[i].localRotation;
-        }
-
-        for (int i = 0; i < Pinky.Length; i++)
-        {
-            pose.Pinky[i] = Pinky[i].localRotation;
-        }
+        AssignBonePose(Thumb, pose.Thumb, true);
+        AssignBonePose(Index, pose.Index, true);
+        AssignBonePose(Middle, pose.Middle, true);
+        AssignBonePose(Ring, pose.Ring, true);
+        AssignBonePose(Pinky, pose.Pinky, true);
     }
 
     [Button]
     public void LoadPose()
     {
-        for (int i = 0; i < Thumb.Length; i++)
-        {
-            Thumb[i].localRotation = pose.Thumb[i];
-        }
+        AssignBonePose(Thumb, pose.Thumb, false);
+        AssignBonePose(Index, pose.Index, false);
+        AssignBonePose(Middle, pose.Middle, false);
+        AssignBonePose(Ring, pose.Ring, false);
+        AssignBonePose(Pinky, pose.Pinky, false);
+    }
 
-        for (int i = 0; i < Index.Length; i++)
-        {
-            Index[i].localRotation = pose.Index[i];
-        }
-
-        for (int i = 0; i < Middle.Length; i++)
-        {
-            Middle[i].localRotation = pose.Middle[i];
-        }
-
-        for (int i = 0; i < Ring.Length; i++)
-        {
-            Ring[i].localRotation = pose.Ring[i];
-        }
-
-        for (int i = 0; i < Pinky.Length; i++)
-        {
-            Pinky[i].localRotation = pose.Pinky[i];
-        }
+    Quaternion MirrorBoneFix(Quaternion quat)
+    {
+        return new Quaternion(quat.x, quat.y * -1f, quat.z * -1f, quat.w);
     }
 }
