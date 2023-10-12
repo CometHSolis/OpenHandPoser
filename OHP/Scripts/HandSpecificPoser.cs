@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using EasyButtons;
 
+[ExecuteInEditMode]
 public class HandSpecificPoser : MonoBehaviour
 {
+    [Header("HandPoser Settings")]
     public Hand leftHand;
     public Hand rightHand;
-
     public HandSpecficiPoserSO pose;
+
+    [Header("Utilities")]
+    public bool TrackHandsToPoints;
+    public Transform leftHandPoint;
+    public Transform rightHandPoint;
 
     [System.Serializable]
     public struct Hand
     {
+        public Transform HandRoot;
         public Transform[] Thumb;
         public Transform[] Index;
         public Transform[] Middle;
@@ -48,6 +55,14 @@ public class HandSpecificPoser : MonoBehaviour
     }
 
 #region Main Functions
+    public void Update()
+    {
+        if (leftHandPosition && rightHandPosition
+        {
+            TrackHandsToPoints();
+        }
+    }
+
     [Button]
     public void SavePose()
     {
@@ -72,6 +87,15 @@ public class HandSpecificPoser : MonoBehaviour
     public void MirrorRightToLeft()
     {
         leftHand.SetPose(rightHand);
+    }
+
+    public void TrackHandsToPoints()
+    {
+        leftHand.HandRoot.position = leftHandPosition.position;
+        leftHand.HandRoot.rotation = leftHandPosition.rotation;
+
+        rightHand.HandRoot.position = rightHandPosition.position;
+        rightHand.HandRoot.rotation = rightHandPosition.rotation;
     }
 #endregion
 
