@@ -16,6 +16,21 @@ public class HandSpecificPoser : MonoBehaviour
     public Transform leftHandPoint;
     public Transform rightHandPoint;
 
+    Vector3 leftHandBasePosition;
+    Quaternion leftHandBaseRotation;
+
+    Vector3 rightHandBasePosition;
+    Quaternion rightHandBaseRotation;
+
+    private void Start()
+    {
+        leftHandBasePosition = leftHand.HandRoot.position;
+        leftHandBaseRotation = leftHand.HandRoot.rotation;
+
+        rightHandBasePosition = rightHand.HandRoot.position;
+        rightHandBaseRotation = rightHand.HandRoot.rotation;
+    }
+
     [System.Serializable]
     public struct Hand
     {
@@ -57,9 +72,20 @@ public class HandSpecificPoser : MonoBehaviour
 #region Main Functions
     public void Update()
     {
-        if (leftHandPosition && rightHandPosition
+        if (TrackHandsToPoints)
         {
-            TrackHandsToPoints();
+            if (leftHandPosition && rightHandPosition
+            {
+                TrackHandsToPoints();
+            }
+        }
+        else
+        {
+            leftHand.HandRoot.position = leftHandBasePosition;
+            leftHand.HandRoot.rotation = leftHandBaseRotation;
+
+            rightHand.HandRoot.position = rightHandBasePosition;
+            rightHand.HandRoot.rotation = rightHandBaseRotation;
         }
     }
 
